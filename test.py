@@ -19,7 +19,7 @@ import tqdm
 from model.MlpMixer import MLPMixer
 from config import cfg
 
-def test(trainloader, testloader, arch, cp, dataset, classes, device):
+def testing(trainloader, testloader, arch, cp, dataset, classes, device):
     """
       Calculating the accuracy with given clean model and perturbed model.
       :param testloader: The loader of testing data.
@@ -29,8 +29,8 @@ def test(trainloader, testloader, arch, cp, dataset, classes, device):
       :param dataset: The specific dataset.
       :param classes: The classes of the dataset.
     """
-    model = MLPMixer(arch)
-    model.load_state_dict(torch.load(cp))
+    model = MLPMixer(arch, num_classes=classes, training=False)
+    model.load_state_dict(torch.load(cp)['model_state_dict'])
     model = model.to(device)
     model.train()
 

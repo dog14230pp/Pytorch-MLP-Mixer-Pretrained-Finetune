@@ -1,4 +1,4 @@
-## MLP Mixer - Pytorch wiht Finetune Implementation
+## MLP Mixer - Pytorch with Finetune Implementation
 
 This is the repositories that change the weights from Jax (Google Research) to Pytorch. And I also provide the code that people can easliy finetune the MLP-Mixer by themselves.
 
@@ -30,11 +30,18 @@ Here are the explanation of the arguments:
 * ```pretrained```: A boolean. Specify whether to use pretrained model or not.
 * ```finetune```: A boolean. Specify whether to finetune the model or not.
 
-You can run the project by using the script (with pretrained && finetune) below (Take Cifar10 as example):
+You can train MLP-Mixer by using the script (with pretrained && finetune) below (Take Cifar10 as example):
 
 ```python
-python main.py -mode train -arch B_16 -cp converted_weights/Mixer-B_16.pth -dataset cifar10 -E 50 -LR 0.001 -BS 64 -pretrained True -finetune True
+python main.py -mode train -arch B_16 -cp [please_input_the_path_of_the_weights_here] -dataset cifar10 -E 50 -LR 0.001 -BS 64 -pretrained True -finetune True
 ```
+
+You can test MLP-Mixer by using the script below (Take Cifar10 as example):
+
+```python
+ python main.py -mode test -arch B_16 -cp [please_input_the_path_of_the_weights_here] -dataset cifar10 -BS 32 -TBS 32
+```
+
 
 ## Download and Convert the Weights
 
@@ -51,6 +58,12 @@ python convert.py
 ```
 
 If you have other demands, please the github from Google Research: https://github.com/google-research/vision_transformer
+
+## Finetune Result Example
+| Dataset  | Training Data Acc. | Testing Data Acc. |
+| ------------- | ------------- | ------------- |
+| Cifar10 | 99.91% | 92.97% |
+
 
 ## Note
 The project is really flexible, you can add your own dataset, data augumentation techniques or other crazy features by yourself. And if you have done anything interesting, please let me know by creating the github issue. Thanks a lot.

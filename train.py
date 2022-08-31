@@ -66,7 +66,7 @@ def training(trainloader, arch, cp, dataset, classes, pretrained, finetune, devi
 
         if (epoch+1)%20 == 0 or (epoch+1) == cfg.epochs:
 
-            extra = ["MLPMixer", cp + 'Q', dataset, "p", str(cfg.precision), "model", "StepLR", str(epoch+1)]
+            extra = ["MLPMixer", arch + 'Q', dataset, "p", str(cfg.precision), "model", "StepLR", str(epoch+1)]
 
             model_path = os.path.join(cfg.model_dir_mlpmixer, arch, dataset, "_".join(extra) + ".pth")
 

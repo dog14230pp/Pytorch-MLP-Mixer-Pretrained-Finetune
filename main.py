@@ -18,6 +18,7 @@ import tqdm
 
 from config import cfg
 from train import *
+from test import *
 
 def main():
 
@@ -193,7 +194,7 @@ def main():
     if args.mode == 'test':
         # Start testing the model with specific dataset.
         print('========== Start testing the model with specific dataset. ==========')
-        training(trainloader, testloader, args.arch, args.cp, dataset, classes, device)
+        testing(trainloader, testloader, args.arch, args.cp, dataset, classes, device)
 
 if __name__ == "__main__":
     main()
